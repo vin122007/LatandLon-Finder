@@ -33,7 +33,6 @@ deactivate () {
         unset -f deactivate
     fi
 }
-
 # unset irrelevant variables
 deactivate nondestructive
 
