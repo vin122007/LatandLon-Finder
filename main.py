@@ -10,7 +10,13 @@ def index():
 	
 @app.route('/location')
 def location():
-	r = requests.get('https://api.wheretheiss.at/v1/coordinates/' + str(lat) + ',' + str(lon))#fix lat and lon variables
+	latitude = request.args.get('lat')
+	longitude = request.args.get('lon')
+	api = 'https://api.wheretheiss.at/v1/coordinates/'
+	query = str(latitude) + ',' + str(longitude)
+	new_api = api + query
+	r = requests.get(new_api)
+	print(new_api)
 	d = r.json()
 	return render_template('location.html', data = d)
 
